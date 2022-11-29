@@ -16,6 +16,7 @@ jobs:
           channel: beta
           cache: true
       - run: flutter build web
+        working-directory: Individual/4. Realisation/Source Code/cookingnator
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
