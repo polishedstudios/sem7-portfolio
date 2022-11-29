@@ -23,3 +23,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_COOKINGNATOR }}'
           channelId: live
           projectId: cookingnator
+          working-directory: Individual/4. Realisation/Source Code/cookingnator
