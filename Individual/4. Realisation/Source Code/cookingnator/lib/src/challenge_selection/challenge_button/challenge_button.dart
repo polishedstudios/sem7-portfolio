@@ -22,8 +22,8 @@ class StyleOfChallengeButton {
   });
   // ignore: constant_identifier_names
   static const DEFAULT = StyleOfChallengeButton(
-    topColor: Colors.lightBlueAccent,
-    backColor: Colors.lightBlue,
+    topColor: Color.fromARGB(255, 206, 130, 255),
+    backColor: Color.fromARGB(255, 165, 104, 204),
   );
 }
 

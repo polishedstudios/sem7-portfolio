@@ -20,7 +20,7 @@ class ChallengeButtonLocked extends StatelessWidget {
         },
         child: SvgPicture.network(
             'https://d35aaqx5ub95lt.cloudfront.net/images/path/icons/261caf5e7127c22944a432ef5c191cfa.svg',
-            height: 37),
+            height: 36),
       ),
     );
   }

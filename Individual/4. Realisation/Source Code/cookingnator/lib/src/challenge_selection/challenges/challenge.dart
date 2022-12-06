@@ -1,14 +1,3 @@
-const challenges = [
-  Challenge(
-    cuisine: 'Japanese',
-    dishName: DishName(
-      name: 'Curry Rice',
-      original: 'カレーライス',
-      originalPronounciation: 'Karēraisu',
-    ),
-  ),
-];
-
 class Challenge {
   final String cuisine;
   final DishName dishName;

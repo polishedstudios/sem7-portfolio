@@ -1,106 +1,135 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'topbar/topbar.dart';
+import 'units/unit_infobar.dart';
 import 'challenge_button/challenge_button_completed.dart';
 import 'challenge_button/challenge_button_current.dart';
-import 'challenge_button/challenge_button_skipped.dart';
 import 'challenge_button/challenge_button_locked.dart';
 
 class ChallengeSelectionScreen extends StatelessWidget {
   const ChallengeSelectionScreen({super.key});
+  final Color mainColor = const Color.fromARGB(255, 206, 130, 255);
+  final Color mainColorDark = const Color.fromARGB(255, 165, 104, 204);
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<TooltipState> tooltipkey = GlobalKey<TooltipState>();
+
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            height: 84,
-            color: const Color.fromARGB(255, 206, 130, 255),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(6, 0, 8, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          TopBar(),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(0),
+              children: [
+                UnitInfoBar(1, "Description blabla bla de scription."),
+                // hardcoded
+                Stack(
+                  alignment: Alignment.topCenter,
                   children: [
-                    rowItemMain(
-                      'https://i.imgur.com/WPaUdx4.png',
-                      () {}, // onPressed
+                    Positioned(
+                      top: 105,
+                      left: 160,
+                      child: Image.network(
+                        'https://media.istockphoto.com/id/975920186/vector/curry-rice.jpg?s=612x612&w=0&k=20&c=k_nPHH22JKNC6YJHfv6Wa8SfibcrImp6Z0fhw8cCHhQ=',
+                        width: 350,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Positioned(
+                      top: 380,
+                      right: 230,
+                      child: Image.network(
+                        'https://1001freedownloads.s3.amazonaws.com/vector/thumb/96933/miso-soup.png',
+                        width: 270,
+                      ),
+                    ),
+                    Column(
                       children: [
-                        rowItem(
-                          'https://d35aaqx5ub95lt.cloudfront.net/vendor/398e4298a3b39ce566050e5c041949ef.svg',
-                          "0",
-                          () {}, // onPressed
+                        Container(
+                          margin: const EdgeInsets.only(right: 60),
+                          child: ChallengeButtonCompleted(() {}),
                         ),
-                        const SizedBox(width: 10),
-                        rowItem(
-                          'https://d35aaqx5ub95lt.cloudfront.net/vendor/aed279fcbad509208b45ca7a17f3e8dc.svg',
-                          "0",
-                          () {}, // onPressed
+                        Container(
+                          margin: const EdgeInsets.only(right: 130),
+                          child: ChallengeButtonCompleted(() {}),
                         ),
+                        //..
+                        Container(
+                          margin: const EdgeInsets.only(right: 160),
+                          child: ChallengeButtonCurrent(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 95),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 5),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 70),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 45),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        const SizedBox(height: 18),
                       ],
-                    )
+                    ),
                   ],
                 ),
-              ),
+                UnitInfoBar(2, "Description blabla bla de scription."),
+                Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 70),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 140),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 180),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 130),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 50),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 45),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 110),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 90),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 40),
+                      child: ChallengeButtonLocked(() {}),
+                    ),
+                    const SizedBox(height: 18),
+                  ],
+                ),
+              ],
             ),
           ),
-          const Divider(
-            height: 3,
-            thickness: 3,
-            color: Color.fromARGB(255, 165, 104, 204),
-          ),
-          const SizedBox(height: 40),
-          // everything from this point onwards is in ListView!!!
 
           // TODO:
-          // create path & units hardcoded first, add chest in path
+          // create path & units from "units_jp.dart" & "challenges_jp.dart" (even if just 1), add chest in path
+          // ^ could make these Stacks with containers and images as widget "UnitsJapanese".
           // closed: https://d35aaqx5ub95lt.cloudfront.net/images/path/b841637c196f5be786d8b8578a42ffbf.svg
           // open: https://d35aaqx5ub95lt.cloudfront.net/images/path/8e1b4675455a4e453aac3681e0f5599e.svg
-          // add country theme images behind (Stack)
-
-          // test buttons
-          ChallengeButtonCompleted(() {}), // onPressed
-          ChallengeButtonCurrent(() {}),
-          ChallengeButtonSkipped(() {}),
-          ChallengeButtonLocked(() {}),
-        ],
-      ),
-    );
-  }
-
-  Widget rowItemMain(text, onPressed) {
-    return TextButton(
-      onPressed: () {
-        onPressed();
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [Image.network(text)],
-      ),
-    );
-  }
-
-  Widget rowItem(icon, text, onPressed) {
-    return TextButton(
-      onPressed: () {
-        onPressed();
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.network(
-            icon,
-          ),
-          if (text != null) ...{
-            const SizedBox(width: 8),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-            ),
-          },
         ],
       ),
     );

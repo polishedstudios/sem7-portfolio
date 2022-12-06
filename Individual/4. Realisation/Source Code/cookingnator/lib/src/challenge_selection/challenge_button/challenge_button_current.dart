@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'challenge_button.dart';
+import '/src/style/palette.dart';
 
 class ChallengeButtonCurrent extends StatelessWidget {
-  const ChallengeButtonCurrent(this.onPressed, {super.key});
+  ChallengeButtonCurrent(this.onPressed, {super.key});
   final Function() onPressed;
+  final Palette palette = Palette();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: ChallengeButton(
-          style: const StyleOfChallengeButton(
-            topColor: Color.fromARGB(255, 206, 130, 255),
-            backColor: Color.fromARGB(255, 165, 104, 204),
+          style: StyleOfChallengeButton(
+            topColor: palette.colorMain,
+            backColor: palette.colorMainDark,
           ),
           onPressed: () {
             onPressed();
