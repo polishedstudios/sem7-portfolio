@@ -20,8 +20,8 @@ class ChallengeButtonCurrent extends StatelessWidget {
           onPressed: () {
             onPressed();
           },
-          child: SvgPicture.network(
-            'https://d35aaqx5ub95lt.cloudfront.net/images/path/icons/ef9c771afdb674f0ff82fae25c6a7b0a.svg',
+          child: SvgPicture.asset(
+            'assets/challenge_button_star.svg',
             height: 37,
           ),
         ));

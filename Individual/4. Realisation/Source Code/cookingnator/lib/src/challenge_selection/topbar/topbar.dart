@@ -27,13 +27,13 @@ class TopBar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       rowItem(
-                        'https://d35aaqx5ub95lt.cloudfront.net/vendor/398e4298a3b39ce566050e5c041949ef.svg',
+                        'assets/streak.svg',
                         "2",
                         () {}, // onPressed
                       ),
                       const SizedBox(width: 10),
                       rowItem(
-                        'https://d35aaqx5ub95lt.cloudfront.net/vendor/aed279fcbad509208b45ca7a17f3e8dc.svg',
+                        'assets/gem.svg',
                         "0",
                         () {}, // onPressed
                       ),
@@ -73,7 +73,7 @@ class TopBar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.network(
+          SvgPicture.asset(
             icon,
           ),
           if (text != null) ...{

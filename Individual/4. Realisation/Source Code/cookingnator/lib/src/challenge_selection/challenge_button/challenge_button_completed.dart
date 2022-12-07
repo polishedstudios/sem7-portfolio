@@ -21,13 +21,11 @@ class ChallengeButtonCompleted extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            SvgPicture.network(
-              'https://d35aaqx5ub95lt.cloudfront.net/images/path/04c71ff20ffdd493e967aec8fd5a864f.svg',
+            SvgPicture.asset(
+              'assets/challenge_button_shine.svg',
               height: 49,
             ),
-            SvgPicture.network(
-                'https://d35aaqx5ub95lt.cloudfront.net/images/path/icons/53727b0c96103443bc616435bb1f2fbc.svg',
-                height: 42),
+            SvgPicture.asset('assets/challenge_button_check.svg', height: 42),
           ],
         ),
       ),

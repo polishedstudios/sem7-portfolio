@@ -18,9 +18,8 @@ class ChallengeButtonLocked extends StatelessWidget {
         onPressed: () {
           onPressed();
         },
-        child: SvgPicture.network(
-            'https://d35aaqx5ub95lt.cloudfront.net/images/path/icons/261caf5e7127c22944a432ef5c191cfa.svg',
-            height: 36),
+        child:
+            SvgPicture.asset('assets/challenge_button_locked.svg', height: 36),
       ),
     );
   }

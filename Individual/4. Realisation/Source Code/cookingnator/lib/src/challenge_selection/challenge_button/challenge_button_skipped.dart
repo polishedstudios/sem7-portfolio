@@ -18,9 +18,8 @@ class ChallengeButtonSkipped extends StatelessWidget {
         onPressed: () {
           onPressed();
         },
-        child: SvgPicture.network(
-            'https://d35aaqx5ub95lt.cloudfront.net/images/path/icons/5e4203031e39fc43d94371565fd0d369.svg',
-            height: 38),
+        child:
+            SvgPicture.asset('assets/challenge_button_skipped.svg', height: 38),
       ),
     );
   }
