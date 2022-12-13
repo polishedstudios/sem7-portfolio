@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StyleOfChallengeButton {
+class StyleOfPressButton {
   final Color topColor;
   final Color backColor;
   final double? width;
@@ -9,11 +9,14 @@ class StyleOfChallengeButton {
   final double z;
   final double tapped;
 
-  const StyleOfChallengeButton({
+  static const Color purple = Color(0xFFce82ff);
+  static const Color purpleDark = Color(0xFFa568cc);
+
+  const StyleOfPressButton({
     this.width,
     this.height,
-    this.topColor = const Color(0xFF45484c),
-    this.backColor = const Color(0xFF191a1c),
+    this.topColor = purple,
+    this.backColor = purpleDark,
     this.borderRadius = const BorderRadius.all(
       Radius.circular(55.0),
     ),
@@ -21,23 +24,23 @@ class StyleOfChallengeButton {
     this.tapped = 3,
   });
   // ignore: constant_identifier_names
-  static const DEFAULT = StyleOfChallengeButton(
-    topColor: Color.fromARGB(255, 206, 130, 255),
-    backColor: Color.fromARGB(255, 165, 104, 204),
+  static const DEFAULT = StyleOfPressButton(
+    topColor: purple,
+    backColor: purpleDark,
   );
 }
 
-class ChallengeButton extends StatefulWidget {
+class PressButton extends StatefulWidget {
   final VoidCallback onPressed;
   final Widget child;
-  final StyleOfChallengeButton style;
+  final StyleOfPressButton style;
   final double width;
   final double height;
 
-  const ChallengeButton({
+  const PressButton({
     required this.onPressed,
     required this.child,
-    this.style = StyleOfChallengeButton.DEFAULT,
+    this.style = StyleOfPressButton.DEFAULT,
     this.width = 75,
     this.height = 75,
     super.key,
@@ -47,7 +50,7 @@ class ChallengeButton extends StatefulWidget {
   State<StatefulWidget> createState() => Button3DState();
 }
 
-class Button3DState extends State<ChallengeButton> {
+class Button3DState extends State<PressButton> {
   bool isTapped = false;
 
   Widget _buildBackLayout() {

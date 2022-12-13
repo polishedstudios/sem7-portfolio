@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
                 bodyMedium: TextStyle(
                   color: palette.ink,
                 ),
-              ),
+              ).apply(fontFamily: 'Baloo2'),
             ),
             routeInformationProvider: _router.routeInformationProvider,
             routeInformationParser: _router.routeInformationParser,

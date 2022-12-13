@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'topbar/topbar.dart';
+import 'topbar/selection_topbar.dart';
 import 'units/unit_infobar.dart';
-import 'challenge_button/challenge_button_completed.dart';
-import 'challenge_button/challenge_button_current.dart';
-import 'challenge_button/challenge_button_locked.dart';
+import '../buttons/challenge_button/challenge_button_completed.dart';
+import '../buttons/challenge_button/challenge_button_current.dart';
+import '../buttons/challenge_button/challenge_button_locked.dart';
+import '/src/challenge_selection/challenge_start_screen.dart';
 
 class ChallengeSelectionScreen extends StatelessWidget {
   const ChallengeSelectionScreen({super.key});
@@ -12,12 +13,10 @@ class ChallengeSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<TooltipState> tooltipkey = GlobalKey<TooltipState>();
-
     return Scaffold(
       body: Column(
         children: [
-          TopBar(),
+          SelectionTopBar(),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(0),
@@ -56,7 +55,14 @@ class ChallengeSelectionScreen extends StatelessWidget {
                         //..
                         Container(
                           margin: const EdgeInsets.only(right: 160),
-                          child: ChallengeButtonCurrent(() {}),
+                          child: ChallengeButtonCurrent(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ChallengeStartScreen()),
+                            );
+                          }),
                         ),
                         Container(
                           margin: const EdgeInsets.only(right: 95),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'challenge_button.dart';
+import '../press_button.dart';
 
 class ChallengeButtonCompleted extends StatelessWidget {
   const ChallengeButtonCompleted(this.onPressed, {super.key});
@@ -10,14 +10,12 @@ class ChallengeButtonCompleted extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
-      child: ChallengeButton(
-        style: StyleOfChallengeButton(
+      child: PressButton(
+        style: StyleOfPressButton(
           topColor: Colors.yellow.shade600,
           backColor: const Color.fromARGB(255, 235, 158, 36),
         ),
-        onPressed: () {
-          onPressed();
-        },
+        onPressed: () => onPressed(),
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [

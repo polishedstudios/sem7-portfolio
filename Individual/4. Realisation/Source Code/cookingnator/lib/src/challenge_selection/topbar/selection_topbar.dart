@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/src/style/palette.dart';
 
-class TopBar extends StatelessWidget {
-  TopBar({super.key});
+class SelectionTopBar extends StatelessWidget {
+  SelectionTopBar({super.key});
   final Palette palette = Palette();
 
   @override
