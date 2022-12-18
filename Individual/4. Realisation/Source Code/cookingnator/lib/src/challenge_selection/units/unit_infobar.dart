@@ -10,7 +10,7 @@ class UnitInfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(15, 12, 15, 14),
+      padding: const EdgeInsets.fromLTRB(15, 13, 15, 17),
       margin: const EdgeInsets.only(bottom: 15),
       color: palette.colorMain,
       width: double.infinity,
@@ -19,11 +19,12 @@ class UnitInfoBar extends StatelessWidget {
         children: [
           Text(
             "Unit $unitNumer",
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
           ),
+          // const SizedBox(height: 2),
           Text(
             description,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 20, height: 1.1),
           ),
         ],
       ),

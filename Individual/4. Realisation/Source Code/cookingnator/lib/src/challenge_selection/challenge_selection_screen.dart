@@ -21,26 +21,20 @@ class ChallengeSelectionScreen extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(0),
               children: [
-                UnitInfoBar(1, "Description blabla bla de scription."),
+                UnitInfoBar(1,
+                    "Start with some easy but popular dishes from the Japanese cuisine."),
                 // hardcoded
                 Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Positioned(
-                      // should probably be Center and then Image in Padding with padding left instead.
-                      top: 105,
-                      left: 160,
-                      child: Image.network(
-                        'https://media.istockphoto.com/id/975920186/vector/curry-rice.jpg?s=612x612&w=0&k=20&c=k_nPHH22JKNC6YJHfv6Wa8SfibcrImp6Z0fhw8cCHhQ=',
-                        width: 350,
-                      ),
-                    ),
-                    Positioned(
-                      top: 380,
-                      right: 230,
-                      child: Image.network(
-                        'https://1001freedownloads.s3.amazonaws.com/vector/thumb/96933/miso-soup.png',
-                        width: 270,
+                    const Positioned(
+                      bottom: -28,
+                      right: -120,
+                      child: Image(
+                        image:
+                            AssetImage('assets/challenges/SalmonRiceballs.png'),
+                        width: 620,
+                        opacity: AlwaysStoppedAnimation(.91),
                       ),
                     ),
                     Column(
@@ -81,46 +75,60 @@ class ChallengeSelectionScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                UnitInfoBar(2, "Description blabla bla de scription."),
-                Column(
+                UnitInfoBar(2, "Start taking on more difficult dishes."),
+                Stack(
+                  alignment: Alignment.topCenter,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 70),
-                      child: ChallengeButtonLocked(() {}),
+                    const Positioned(
+                      bottom: -93,
+                      left: -72,
+                      child: Image(
+                        image: AssetImage('assets/challenges/CurryRice.png'),
+                        width: 600,
+                        opacity: AlwaysStoppedAnimation(.91),
+                      ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 140),
-                      child: ChallengeButtonLocked(() {}),
+                    Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 70),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 140),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 180),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 130),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 50),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 45),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 110),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 90),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 40),
+                          child: ChallengeButtonLocked(() {}),
+                        ),
+                        const SizedBox(height: 18),
+                      ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 180),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 130),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 50),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 45),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 110),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 90),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 40),
-                      child: ChallengeButtonLocked(() {}),
-                    ),
-                    const SizedBox(height: 18),
                   ],
                 ),
               ],

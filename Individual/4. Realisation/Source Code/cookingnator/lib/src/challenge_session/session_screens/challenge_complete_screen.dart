@@ -18,7 +18,14 @@ class ChallengeCompleteScreen extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Column(children: [
                 Expanded(
-                  child: Column(), // rest in here
+                  child: Column(
+                    children: const [
+                      Text(
+                        "Complete Screen",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ), // rest in here
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton('Continue', () {

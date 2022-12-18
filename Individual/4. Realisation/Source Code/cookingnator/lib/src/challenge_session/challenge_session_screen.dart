@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'session_screens/challenge_screen.dart';
+import 'session_screens/loading_screen.dart';
 import 'session_screens/challenge_upgrade_screen.dart';
+import 'session_screens/challenge_steps_overview_screen.dart';
+import 'session_screens/challenge_necessities_screen.dart';
 import 'session_screens/steps_screen.dart';
 import 'session_screens/challenge_presentation_screen.dart';
 import 'session_screens/challenge_complete_screen.dart';
-import 'session_screens/loading_screen.dart';
 
 class ChallengeSessionScreen extends StatefulWidget {
   const ChallengeSessionScreen({super.key});
@@ -17,6 +19,8 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
   late ChallengeScreen challengeScreen;
   late LoadingScreen loadingScreen;
   late ChallengeUpgradeScreen upgradeScreen;
+  late ChallengeStepsOverviewScreen stepsOverviewScreen;
+  late ChallengeNecessitiesScreen necessitiesScreen;
   late StepsScreen stepsScreen;
   late ChallengePresentationScreen presentationScreen;
   late ChallengeCompleteScreen completeScreen;
@@ -27,6 +31,8 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     loadingScreen = LoadingScreen(finishedLoading);
     // initialize the rest of the screens + whole challenge in loadingScreen?
     upgradeScreen = ChallengeUpgradeScreen(choseUpgrade);
+    stepsOverviewScreen = ChallengeStepsOverviewScreen(finishedStepsOverview);
+    necessitiesScreen = ChallengeNecessitiesScreen(finishedNecessities);
     stepsScreen = StepsScreen(finishedSteps);
     presentationScreen = ChallengePresentationScreen(chosePresentation);
     completeScreen = ChallengeCompleteScreen(closeChallenge);
@@ -54,15 +60,27 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     });
   }
 
-  finishedSteps() {
+  finishedStepsOverview() {
     setState(() {
       activeStep = 4;
     });
   }
 
-  chosePresentation() {
+  finishedNecessities() {
     setState(() {
       activeStep = 5;
+    });
+  }
+
+  finishedSteps() {
+    setState(() {
+      activeStep = 6;
+    });
+  }
+
+  chosePresentation() {
+    setState(() {
+      activeStep = 7;
     });
   }
 
@@ -79,10 +97,14 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
       case 2:
         return upgradeScreen;
       case 3:
-        return stepsScreen;
+        return stepsOverviewScreen;
       case 4:
-        return presentationScreen;
+        return necessitiesScreen;
       case 5:
+        return stepsScreen;
+      case 6:
+        return presentationScreen;
+      case 7:
         return completeScreen;
     }
     return challengeScreen;

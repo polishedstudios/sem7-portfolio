@@ -18,7 +18,14 @@ class StepsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Column(children: [
                 Expanded(
-                  child: Column(), // rest in here
+                  child: Column(
+                    children: const [
+                      Text(
+                        "Steps Screen",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ), // rest in here
                 ),
                 // temporarily until sub-widgets implemented
                 const SizedBox(height: 30),

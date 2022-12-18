@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../challenge_selection/topbar/session_topbar.dart';
 import '../../buttons/primary_button.dart';
 
-class ChallengePresentationScreen extends StatelessWidget {
-  const ChallengePresentationScreen(this.callback, {super.key});
+class ChallengeNecessitiesScreen extends StatelessWidget {
+  const ChallengeNecessitiesScreen(this.callback, {super.key});
   final Function callback;
 
   @override
@@ -21,7 +21,7 @@ class ChallengePresentationScreen extends StatelessWidget {
                   child: Column(
                     children: const [
                       Text(
-                        "Presentations Screen",
+                        "Necessities Screen",
                         style: TextStyle(color: Colors.red),
                       ),
                     ],
