@@ -20,7 +20,7 @@ class SelectionTopBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   rowItemMain(
-                    'https://i.imgur.com/WPaUdx4.png',
+                    'assets/flag_jp.png',
                     () {}, // onPressed
                   ),
                   Row(
@@ -53,14 +53,14 @@ class SelectionTopBar extends StatelessWidget {
     );
   }
 
-  Widget rowItemMain(text, onPressed) {
+  Widget rowItemMain(icon, onPressed) {
     return TextButton(
       onPressed: () {
         onPressed();
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [Image.network(text)],
+        children: [Image(image: AssetImage(icon))],
       ),
     );
   }
@@ -73,9 +73,7 @@ class SelectionTopBar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            icon,
-          ),
+          SvgPicture.asset(icon),
           if (text != null) ...{
             const SizedBox(width: 8),
             Text(

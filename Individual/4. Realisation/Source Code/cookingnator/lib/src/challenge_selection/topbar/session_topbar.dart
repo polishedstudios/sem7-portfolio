@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class StartTopBar extends StatelessWidget {
-  const StartTopBar({super.key});
+class SessionTopBar extends StatelessWidget {
+  const SessionTopBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class StartTopBar extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () {
-              Navigator.maybePop(context);
+              GoRouter.of(context).go('/');
             },
             color: Colors.grey.shade600,
             iconSize: 32,

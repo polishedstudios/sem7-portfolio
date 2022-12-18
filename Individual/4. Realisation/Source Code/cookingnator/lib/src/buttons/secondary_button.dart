@@ -15,7 +15,7 @@ class SecondaryButton extends StatelessWidget {
           fontFamily: 'Baloo2',
           fontSize: 20,
           fontWeight: FontWeight.w600,
-          color: Color(0xFFce82ff),
+          color: Color(0xFFA568CC),
         ),
       ),
     );

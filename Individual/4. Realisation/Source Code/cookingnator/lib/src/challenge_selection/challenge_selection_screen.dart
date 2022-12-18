@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'topbar/selection_topbar.dart';
 import 'units/unit_infobar.dart';
 import '../buttons/challenge_button/challenge_button_completed.dart';
 import '../buttons/challenge_button/challenge_button_current.dart';
 import '../buttons/challenge_button/challenge_button_locked.dart';
-import '/src/challenge_selection/challenge_start_screen.dart';
 
 class ChallengeSelectionScreen extends StatelessWidget {
   const ChallengeSelectionScreen({super.key});
@@ -27,6 +27,7 @@ class ChallengeSelectionScreen extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   children: [
                     Positioned(
+                      // should probably be Center and then Image in Padding with padding left instead.
                       top: 105,
                       left: 160,
                       child: Image.network(
@@ -56,12 +57,7 @@ class ChallengeSelectionScreen extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.only(right: 160),
                           child: ChallengeButtonCurrent(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ChallengeStartScreen()),
-                            );
+                            GoRouter.of(context).go('/session');
                           }),
                         ),
                         Container(
@@ -135,7 +131,7 @@ class ChallengeSelectionScreen extends StatelessWidget {
           // create path & units from "units_jp.dart" & "challenges_jp.dart" (even if just 1), add chest in path
           // ^ could make these Stacks with containers and images as widget "UnitsJapanese".
           // closed: https://d35aaqx5ub95lt.cloudfront.net/images/path/b841637c196f5be786d8b8578a42ffbf.svg
-          // open: https://d35aaqx5ub95lt.cloudfront.net/images/path/8e1b4675455a4e453aac3681e0f5599e.svg
+          // locked: https://d35aaqx5ub95lt.cloudfront.net/images/path/8e1b4675455a4e453aac3681e0f5599e.svg
         ],
       ),
     );

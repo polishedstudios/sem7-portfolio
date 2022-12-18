@@ -22,7 +22,7 @@ CustomTransitionPage<T> buildTransition<T>({
     name: name,
     arguments: arguments,
     restorationId: restorationId,
-    transitionDuration: const Duration(milliseconds: 700),
+    transitionDuration: const Duration(milliseconds: 550),
   );
 }
 
@@ -46,7 +46,7 @@ class _MyReveal extends StatefulWidget {
 class _MyRevealState extends State<_MyReveal> {
   bool _finished = false;
 
-  final _tween = Tween(begin: const Offset(0, -1), end: Offset.zero);
+  final _tween = Tween(begin: const Offset(0, 1), end: Offset.zero);
 
   @override
   void initState() {
@@ -79,8 +79,8 @@ class _MyRevealState extends State<_MyReveal> {
           position: _tween.animate(
             CurvedAnimation(
               parent: widget.animation,
-              curve: Curves.easeOutCubic,
-              reverseCurve: Curves.easeOutCubic,
+              curve: Curves.easeInOutQuart,
+              reverseCurve: Curves.easeOutCirc,
             ),
           ),
           child: Container(
@@ -89,7 +89,7 @@ class _MyRevealState extends State<_MyReveal> {
         ),
         AnimatedOpacity(
           opacity: _finished ? 1 : 0,
-          duration: const Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 250),
           child: widget.child,
         ),
       ],

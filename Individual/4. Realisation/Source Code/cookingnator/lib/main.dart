@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             const ChallengeSelectionScreen(key: Key('challenge selection')),
         routes: [
           GoRoute(
-            path: 'play',
+            path: 'session',
             pageBuilder: (context, state) => buildTransition<void>(
               child:
                   const ChallengeSessionScreen(key: Key('challenge session')),
