@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({super.key});
+  const LoadingScreen(this.callback, {super.key});
+  final Function callback;
 
   @override
   Widget build(BuildContext context) {
-    // MaterialPageRoute(builder: (context) => const LoadingScreen()),
-
-    // Future.delayed(
-    //   const Duration(seconds: 2),
-    //   (() async {
-    //     // Future.delayed(
-    //     //     const Duration(seconds: 2), () => GoRouter.of(context).pop());
-    //     GoRouter.of(context).go('/play');
-    //     // await Future.delayed(Duration(seconds: 2));
-    //     // GoRouter.of(context).pop();
-    //     // GoRouter.of(context).pop();
-    //   }),
-    // );
+    Future.delayed(
+      const Duration(milliseconds: 3700),
+      (() async {
+        callback();
+      }),
+    );
 
     return Scaffold(
       backgroundColor: const Color(0xFFcd82ff),

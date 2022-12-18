@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../challenge_selection/topbar/session_topbar.dart';
-// import '../../buttons/primary_button.dart';
+import '../../buttons/primary_button.dart';
 
 class StepsScreen extends StatelessWidget {
   const StepsScreen(this.callback, {super.key});
@@ -20,10 +20,11 @@ class StepsScreen extends StatelessWidget {
                 Expanded(
                   child: Column(), // rest in here
                 ),
-                // const SizedBox(height: 30),
-                // PrimaryButton('Continue', () {
-                //   callback();
-                // }),
+                // temporarily until sub-widgets implemented
+                const SizedBox(height: 30),
+                PrimaryButton('Continue', () {
+                  callback();
+                }),
               ]),
             ),
           ),

@@ -4,7 +4,7 @@ import 'session_screens/challenge_upgrade_screen.dart';
 import 'session_screens/steps_screen.dart';
 import 'session_screens/challenge_presentation_screen.dart';
 import 'session_screens/challenge_complete_screen.dart';
-import 'loading_screen.dart';
+import 'session_screens/loading_screen.dart';
 
 class ChallengeSessionScreen extends StatefulWidget {
   const ChallengeSessionScreen({super.key});
@@ -14,19 +14,27 @@ class ChallengeSessionScreen extends StatefulWidget {
 
 class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
   int activeStep = 0;
+  late ChallengeScreen challengeScreen;
+  late LoadingScreen loadingScreen;
+  late ChallengeUpgradeScreen upgradeScreen;
+  late StepsScreen stepsScreen;
+  late ChallengePresentationScreen presentationScreen;
+  late ChallengeCompleteScreen completeScreen;
+
+  @override
+  initState() {
+    challengeScreen = ChallengeScreen(acceptedChallenge);
+    loadingScreen = LoadingScreen(finishedLoading);
+    // initialize the rest of the screens + whole challenge in loadingScreen?
+    upgradeScreen = ChallengeUpgradeScreen(choseUpgrade);
+    stepsScreen = StepsScreen(finishedSteps);
+    presentationScreen = ChallengePresentationScreen(chosePresentation);
+    completeScreen = ChallengeCompleteScreen(closeChallenge);
+    super.initState();
+  }
 
   // whole challenge state here too
   // for persistence: send timeSpent in callback in the Steps Screen
-
-  // below screens all reuse topbar,, not in this file.
-  // - Challenge/Dish Screen
-  // - Challenge/Dish Upgrade Screen
-  // - Loading Screen
-  // - Step Screen -> has DotStepper + sub widgets
-  // - (opt) Challenge/Dish Presentation Screen
-  // - Challenge Complete Screen
-
-  // need to add callbacks to next buttons in screens (except Step Screen, this needs one in sub-widget).
 
   acceptedChallenge() {
     setState(() {
@@ -34,13 +42,13 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     });
   }
 
-  choseUpgrade() {
+  finishedLoading() {
     setState(() {
-      activeStep = 3; // 2
+      activeStep = 2;
     });
   }
 
-  finishedLoading() {
+  choseUpgrade() {
     setState(() {
       activeStep = 3;
     });
@@ -63,24 +71,21 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
   }
 
   Widget _buildBody(int index) {
-    // fix with https://pub.dev/packages/flutter_bloc
-    // https://bloclibrary.dev/#/fluttercountertutorial
-    print(index);
     switch (index) {
       case 0:
-        return ChallengeScreen(acceptedChallenge);
+        return challengeScreen;
       case 1:
-        return ChallengeUpgradeScreen(choseUpgrade);
+        return loadingScreen;
       case 2:
-        return const LoadingScreen();
+        return upgradeScreen;
       case 3:
-        return StepsScreen(finishedSteps);
+        return stepsScreen;
       case 4:
-        return ChallengePresentationScreen(chosePresentation);
+        return presentationScreen;
       case 5:
-        ChallengeCompleteScreen(closeChallenge);
+        return completeScreen;
     }
-    return ChallengeScreen(acceptedChallenge);
+    return challengeScreen;
   }
 
   @override
