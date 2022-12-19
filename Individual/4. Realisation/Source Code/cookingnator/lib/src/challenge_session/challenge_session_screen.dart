@@ -48,13 +48,13 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     });
   }
 
-  finishedLoading() {
+  choseUpgrade() {
     setState(() {
       activeStep = 2;
     });
   }
 
-  choseUpgrade() {
+  finishedLoading() {
     setState(() {
       activeStep = 3;
     });
@@ -93,9 +93,9 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
       case 0:
         return challengeScreen;
       case 1:
-        return loadingScreen;
-      case 2:
         return upgradeScreen;
+      case 2:
+        return loadingScreen;
       case 3:
         return stepsOverviewScreen;
       case 4:
