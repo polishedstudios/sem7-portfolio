@@ -52,15 +52,16 @@ class ChallengeUpgradeScreen extends StatelessWidget {
                 const SizedBox(height: 27),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ImageButton('assets/challenges/CurryRice.png',
                         'Add chicken', () {}),
+                    const SizedBox(width: 15),
                     ImageButton('assets/challenges/BeefCurryRice.png',
                         'Add beef', () {}),
                   ],
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 5),
                 SecondaryButton('Not this time', () {
                   callback();
                 }),

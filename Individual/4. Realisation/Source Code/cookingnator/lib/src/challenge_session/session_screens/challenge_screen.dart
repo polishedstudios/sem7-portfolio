@@ -95,6 +95,7 @@ class ChallengeScreen extends StatelessWidget {
                   PrimaryButton('Accept challenge', () {
                     callback();
                   }),
+                  const SizedBox(height: 5),
                   SecondaryButton('Skip for now', () {
                     GoRouter.of(context).go('/'); // "close" for now
                   }),

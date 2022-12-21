@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/src/style/palette.dart';
@@ -11,7 +12,7 @@ class SelectionTopBar extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 84,
+          height: kIsWeb ? 64 : 84,
           color: palette.colorMain,
           child: SafeArea(
             child: Padding(

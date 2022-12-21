@@ -15,7 +15,7 @@ jobs:
         with:
           channel: beta
           cache: true
-      - run: flutter build web
+      - run: flutter build web --no-sound-null-safety
         working-directory: Individual/4. Realisation/Source Code/cookingnator
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
