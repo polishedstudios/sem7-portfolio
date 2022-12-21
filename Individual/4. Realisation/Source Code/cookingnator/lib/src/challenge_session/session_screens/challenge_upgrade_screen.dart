@@ -22,10 +22,13 @@ class ChallengeUpgradeScreen extends StatelessWidget {
                 const Expanded(
                   child: SizedBox(
                     width: double.infinity,
-                    child:
-                        Image(image: AssetImage('assets/challenges/Chef.png')),
+                    child: Image(
+                        alignment: Alignment.bottomCenter,
+                        image: AssetImage(
+                            'assets/challenges/mawaru-penguindrum-1.gif')),
                   ),
                 ),
+                const SizedBox(height: 10),
                 BubbleBox(
                   shape: BubbleShapeBorder(
                     arrowHeight: 16,
@@ -49,7 +52,8 @@ class ChallengeUpgradeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 27),
+                // const SizedBox(height: 27),
+                const SizedBox(height: 50),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

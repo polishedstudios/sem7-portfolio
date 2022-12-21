@@ -7,7 +7,7 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-      const Duration(milliseconds: 3700),
+      const Duration(milliseconds: 2400),
       (() async {
         callback();
       }),
