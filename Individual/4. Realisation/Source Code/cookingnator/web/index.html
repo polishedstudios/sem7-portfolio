@@ -40,7 +40,25 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  <!-- for testing on dhttp -->
   <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      }).then(function(engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function(appRunner) {
+        return appRunner.runApp();
+      });
+    });
+  </script>
+
+  <!-- for deploy -->
+  
+  <!-- <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
     function loadMainDartJs() {
@@ -103,6 +121,6 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
-  </script>
+  </script> -->
 </body>
 </html>
