@@ -54,11 +54,23 @@ class ChallengeUpgradeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ImageButton('assets/challenges/CurryRice.png',
-                        'Add chicken', () {}),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: ImageButton('assets/challenges/CurryRice.png',
+                            'Add chicken', () {}),
+                      ),
+                    ),
                     const SizedBox(width: 15),
-                    ImageButton('assets/challenges/BeefCurryRice.png',
-                        'Add beef', () {}),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: ImageButton(
+                            'assets/challenges/BeefCurryRice.png',
+                            'Add beef',
+                            () {}),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 5),

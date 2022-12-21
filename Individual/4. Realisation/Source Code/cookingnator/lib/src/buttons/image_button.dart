@@ -25,6 +25,7 @@ class ImageButton extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               text.toUpperCase(),
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w600,

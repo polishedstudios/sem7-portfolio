@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
         routes: [
           GoRoute(
             path: 'session',
-            pageBuilder: (context, state) => buildTransition<void>(
+            builder: (context, state) =>
+                const ChallengeSessionScreen(key: Key('challenge session')),
+            pageBuilder: (context, state) => buildTransition(
               child:
                   const ChallengeSessionScreen(key: Key('challenge session')),
-              color: context.watch<Palette>().backgroundMain,
             ),
-            // sub-routes...
           ),
         ],
       ),
