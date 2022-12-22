@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../challenge_selection/topbar/session_topbar.dart';
+import '../session_topbar.dart';
 import '../../buttons/primary_button.dart';
 
 class ChallengeStepsOverviewScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class ChallengeStepsOverviewScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SessionTopBar(),
+          SessionTopBar(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15),

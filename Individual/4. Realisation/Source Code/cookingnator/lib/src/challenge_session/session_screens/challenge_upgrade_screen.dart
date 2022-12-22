@@ -1,6 +1,6 @@
 import 'package:cookingnator/src/buttons/image_button.dart';
 import 'package:flutter/material.dart';
-import '../../challenge_selection/topbar/session_topbar.dart';
+import '../session_topbar.dart';
 import '../speech_bubble.dart';
 import '../../buttons/secondary_button.dart';
 
@@ -14,7 +14,7 @@ class ChallengeUpgradeScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SessionTopBar(),
+          SessionTopBar(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15),

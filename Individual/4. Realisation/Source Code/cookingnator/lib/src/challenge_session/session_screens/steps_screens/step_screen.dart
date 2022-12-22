@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../challenge_selection/topbar/session_topbar.dart';
-import '../../buttons/primary_button.dart';
+import '../../../buttons/primary_button.dart';
 
-class StepsScreen extends StatelessWidget {
-  const StepsScreen(this.callback, {super.key});
+class StepScreen extends StatelessWidget {
+  const StepScreen(this.stepNumber, this.callback, {super.key});
   final Function callback;
+  final int stepNumber; // only for now
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +12,22 @@ class StepsScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SessionTopBar(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Column(children: [
                 Expanded(
                   child: Column(
-                    children: const [
+                    children: [
                       Text(
-                        "Steps Screen",
-                        style: TextStyle(color: Colors.red),
+                        "step $stepNumber",
+                        style: const TextStyle(
+                            color: Color(0xFFa568cc), fontSize: 60),
                       ),
                     ],
-                  ), // rest in here
+                  ),
                 ),
-                // temporarily until sub-widgets implemented
+                // add back button?
                 const SizedBox(height: 30),
                 PrimaryButton('Continue', () {
                   callback();

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../challenge_selection/topbar/session_topbar.dart';
-import '../../buttons/primary_button.dart';
+import '../../../buttons/primary_button.dart';
 
-class ChallengePresentationScreen extends StatelessWidget {
-  const ChallengePresentationScreen(this.callback, {super.key});
+class StepPresentationScreen extends StatelessWidget {
+  const StepPresentationScreen(this.callback, {super.key});
   final Function callback;
 
   @override
@@ -12,7 +11,6 @@ class ChallengePresentationScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SessionTopBar(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15),
@@ -25,7 +23,7 @@ class ChallengePresentationScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.red),
                       ),
                     ],
-                  ), // rest in here
+                  ),
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton('Continue', () {

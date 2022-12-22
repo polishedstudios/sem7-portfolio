@@ -4,8 +4,8 @@ import 'session_screens/loading_screen.dart';
 import 'session_screens/challenge_upgrade_screen.dart';
 import 'session_screens/challenge_steps_overview_screen.dart';
 import 'session_screens/challenge_necessities_screen.dart';
-import 'session_screens/steps_screen.dart';
-import 'session_screens/challenge_presentation_screen.dart';
+import 'session_screens/challenge_steps_screen.dart';
+import 'session_screens/steps_screens/step_presentation_screen.dart';
 import 'session_screens/challenge_complete_screen.dart';
 
 class ChallengeSessionScreen extends StatefulWidget {
@@ -21,8 +21,7 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
   late ChallengeUpgradeScreen upgradeScreen;
   late ChallengeStepsOverviewScreen stepsOverviewScreen;
   late ChallengeNecessitiesScreen necessitiesScreen;
-  late StepsScreen stepsScreen;
-  late ChallengePresentationScreen presentationScreen;
+  late ChallengeStepsScreen stepsScreen;
   late ChallengeCompleteScreen completeScreen;
 
   @override
@@ -33,8 +32,7 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     upgradeScreen = ChallengeUpgradeScreen(choseUpgrade);
     stepsOverviewScreen = ChallengeStepsOverviewScreen(finishedStepsOverview);
     necessitiesScreen = ChallengeNecessitiesScreen(finishedNecessities);
-    stepsScreen = StepsScreen(finishedSteps);
-    presentationScreen = ChallengePresentationScreen(chosePresentation);
+    stepsScreen = ChallengeStepsScreen(finishedSteps);
     completeScreen = ChallengeCompleteScreen(closeChallenge);
     super.initState();
   }
@@ -78,12 +76,6 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     });
   }
 
-  chosePresentation() {
-    setState(() {
-      activeStep = 7;
-    });
-  }
-
   closeChallenge() {
     // GoRouter
   }
@@ -103,8 +95,6 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
       case 5:
         return stepsScreen;
       case 6:
-        return presentationScreen;
-      case 7:
         return completeScreen;
     }
     return challengeScreen;
