@@ -17,28 +17,24 @@ class ChallengeSessionScreen extends StatefulWidget {
 class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
   int activeStep = 0;
   late ChallengeScreen challengeScreen;
-  late LoadingScreen loadingScreen;
   late ChallengeUpgradeScreen upgradeScreen;
-  late ChallengeStepsOverviewScreen stepsOverviewScreen;
   late ChallengeNecessitiesScreen necessitiesScreen;
+  late ChallengeStepsOverviewScreen stepsOverviewScreen;
+  late LoadingScreen loadingScreen;
   late ChallengeStepsScreen stepsScreen;
   late ChallengeCompleteScreen completeScreen;
 
   @override
   initState() {
     challengeScreen = ChallengeScreen(acceptedChallenge);
-    loadingScreen = LoadingScreen(finishedLoading);
-    // initialize the rest of the screens + whole challenge in loadingScreen?
     upgradeScreen = ChallengeUpgradeScreen(choseUpgrade);
-    stepsOverviewScreen = ChallengeStepsOverviewScreen(finishedStepsOverview);
     necessitiesScreen = ChallengeNecessitiesScreen(finishedNecessities);
+    stepsOverviewScreen = ChallengeStepsOverviewScreen(finishedStepsOverview);
+    loadingScreen = LoadingScreen(finishedLoading);
     stepsScreen = ChallengeStepsScreen(finishedSteps);
     completeScreen = ChallengeCompleteScreen(closeChallenge);
     super.initState();
   }
-
-  // whole challenge state here too
-  // for persistence: send timeSpent in callback in the Steps Screen
 
   acceptedChallenge() {
     setState(() {

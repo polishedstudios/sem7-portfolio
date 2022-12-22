@@ -54,19 +54,19 @@ class SelectionTopBar extends StatelessWidget {
     );
   }
 
-  Widget rowItemMain(icon, onPressed) {
+  Widget rowItemMain(String imagePath, onPressed) {
     return TextButton(
       onPressed: () {
         onPressed();
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [Image(image: AssetImage(icon))],
+        children: [Image(image: AssetImage(imagePath))],
       ),
     );
   }
 
-  Widget rowItem(icon, text, onPressed) {
+  Widget rowItem(String imagePath, String? text, onPressed) {
     return TextButton(
       onPressed: () {
         onPressed();
@@ -74,7 +74,7 @@ class SelectionTopBar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(icon),
+          SvgPicture.asset(imagePath),
           if (text != null) ...{
             const SizedBox(width: 8),
             Text(

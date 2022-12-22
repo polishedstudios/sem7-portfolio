@@ -44,261 +44,21 @@ class ChallengeStepsOverviewScreen extends StatelessWidget {
                         Expanded(
                           child: ListView(
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-prep.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Prepare ingredients",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '2',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-cook.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Cook rice and set aside",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-cook.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Sauté onion pieces",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '4',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-cook.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Add potato and carrot pieces",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '5',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-cook.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Add water and bring it to a boil",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '6',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-cook.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Add curry roux and cook",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Divider(
-                                  thickness: 1,
-                                  height: 14,
-                                  color: Colors.grey.shade300),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(
-                                    width: 13,
-                                    child: Text(
-                                      '7',
-                                      style: TextStyle(
-                                        color: Color.fromARGB(255, 39, 38, 39),
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  SizedBox(
-                                    width: 30,
-                                    child: Image.asset(
-                                      'assets/challenges/type-presentation.png',
-                                    ),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  const Text(
-                                    "Present your dish",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 39, 38, 39),
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              mockRow(1, "prep", "Prepare ingredients"),
+                              mockRow(2, "cook", "Cook rice and set aside"),
+                              mockRow(3, "cook", "Sauté onion pieces"),
+                              mockRow(
+                                  4, "cook", "Add potato and carrot pieces"),
+                              mockRow(5, "cook",
+                                  "Add water and bring it to a boil"),
+                              mockRow(6, "cook", "Add curry roux and cook"),
+                              mockRow(7, "presentation", "Present your dish"),
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  // has back button?
                   const SizedBox(height: 30),
                   PrimaryButton("Let's start!", () {
                     callback();
@@ -309,6 +69,52 @@ class ChallengeStepsOverviewScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget mockRow(int stepNumber, String type, String stepDescription) {
+    return Column(
+      children: [
+        if (stepNumber != 1) ...{
+          Divider(
+            thickness: 1,
+            height: 15,
+            color: Colors.grey.shade300,
+          ),
+        },
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 13,
+              child: Text(
+                "$stepNumber",
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 39, 38, 39),
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            SizedBox(
+              width: 30,
+              child: Image.asset(
+                'assets/challenges/type-$type.png',
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              stepDescription,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 39, 38, 39),
+                fontSize: 22,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -23,7 +23,6 @@ class ChallengeSelectionScreen extends StatelessWidget {
               children: [
                 UnitInfoBar(1,
                     "Start with some easy but popular dishes from the Japanese cuisine."),
-                // hardcoded
                 Stack(
                   alignment: Alignment.topCenter,
                   children: [
@@ -134,12 +133,10 @@ class ChallengeSelectionScreen extends StatelessWidget {
               ],
             ),
           ),
-
-          // TODO:
-          // create path & units from "units_jp.dart" & "challenges_jp.dart" (even if just 1), add chest in path
-          // ^ could make these Stacks with containers and images as widget "UnitsJapanese".
-          // closed: https://d35aaqx5ub95lt.cloudfront.net/images/path/b841637c196f5be786d8b8578a42ffbf.svg
-          // locked: https://d35aaqx5ub95lt.cloudfront.net/images/path/8e1b4675455a4e453aac3681e0f5599e.svg
+          // chest icons to use:
+          // locked: https://d35aaqx5ub95lt.cloudfront.net/images/path/b841637c196f5be786d8b8578a42ffbf.svg
+          // open: https://d35aaqx5ub95lt.cloudfront.net/images/path/8e1b4675455a4e453aac3681e0f5599e.svg
+          // closed: https://d35aaqx5ub95lt.cloudfront.net/images/path/09f977a3e299d1418fde0fd053de0beb.svg
         ],
       ),
     );

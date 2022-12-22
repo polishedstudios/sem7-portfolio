@@ -21,7 +21,6 @@ class UnitInfoBar extends StatelessWidget {
             "Unit $unitNumer",
             style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
           ),
-          // const SizedBox(height: 2),
           Text(
             description,
             style: const TextStyle(fontSize: 20, height: 1.1),

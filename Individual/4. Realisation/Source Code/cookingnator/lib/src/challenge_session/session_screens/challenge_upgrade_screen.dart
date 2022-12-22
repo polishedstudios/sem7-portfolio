@@ -52,7 +52,6 @@ class ChallengeUpgradeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // const SizedBox(height: 27),
                 const SizedBox(height: 50),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -53,43 +53,15 @@ class ChallengeCompleteScreen extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      // const Text(
-                      //   '+20XP',
-                      //   style: TextStyle(
-                      //     color: Color(0xFFA568CC),
-                      //     fontSize: 27,
-                      //     fontWeight: FontWeight.w600,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Box(
-                      text: 'TOTAL XP',
-                      child: Text(
-                        '+20',
-                        style: TextStyle(
-                          color: Color(0xFFA568CC),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 17),
-                    Box(
-                      text: 'Time',
-                      child: Text(
-                        '35:42',
-                        style: TextStyle(
-                          color: Color(0xFFA568CC),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                  children: [
+                    statBox('Total XP', '+20'),
+                    const SizedBox(width: 17),
+                    statBox('Time', '35:42'),
                   ],
                 ),
                 const SizedBox(height: 60),
@@ -100,6 +72,20 @@ class ChallengeCompleteScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget statBox(String title, String value) {
+    return Box(
+      text: title,
+      child: Text(
+        value,
+        style: const TextStyle(
+          color: Color(0xFFA568CC),
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

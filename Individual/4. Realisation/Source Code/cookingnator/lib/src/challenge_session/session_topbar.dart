@@ -35,19 +35,11 @@ class _SessionTopBar extends State<SessionTopBar> {
               dotCount: widget.stepAmount,
               dotRadius: 10,
               lineConnectorsEnabled: false,
-
               activeStep: widget.activeStep,
               shape: Shape.circle,
               spacing: 6,
               indicator: Indicator.jump,
               tappingEnabled: false,
-
-              // onDotTapped: (tappedDotIndex) {
-              //   setState(() {
-              //     widget.activeStep = tappedDotIndex;
-              //   });
-              // },
-
               fixedDotDecoration: const FixedDotDecoration(
                 color: SessionTopBar.purpleDark,
                 strokeColor: Colors.white,

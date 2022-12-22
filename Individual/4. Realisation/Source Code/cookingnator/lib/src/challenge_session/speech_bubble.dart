@@ -1,56 +1,25 @@
-// Not my own. https://github.com/yixiaco/bubble_box
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-/// 气泡方向
-enum BubbleDirection {
-  /// 气泡尖角在上方
-  top,
+enum BubbleDirection { top, bottom, right, left, none }
 
-  /// 气泡尖角在下方
-  bottom,
-
-  /// 气泡尖角在右侧
-  right,
-
-  /// 气泡尖角在左侧
-  left,
-
-  /// 不显示气泡尖角
-  none
-}
-
-/// 气泡盒子定位参数
 class BubblePosition {
-  /// [BubbleDirection.top]、[BubbleDirection.bottom],左边距
-  /// [BubbleDirection.left]、[BubbleDirection.right],上边距
   final double? start;
-
-  /// [BubbleDirection.top]、[BubbleDirection.bottom],右边距
-  /// [BubbleDirection.left]、[BubbleDirection.right],下边距
   final double? end;
-
-  /// 对齐中间位置偏移,所有位置生效,除了[BubbleDirection.none]
   final double? center;
 
-  /// 使用开始偏移
   const BubblePosition.start(this.start)
       : end = null,
         center = null;
-
-  /// 使用结束偏移
   const BubblePosition.end(this.end)
       : start = null,
         center = null;
-
-  /// 使用中间偏移
   const BubblePosition.center(this.center)
       : start = null,
         end = null;
 
   const BubblePosition._(this.start, this.end, this.center);
 
-  /// 定位参数有值的倍数相乘
   operator *(double scale) {
     double? start;
     double? end;
@@ -68,36 +37,14 @@ class BubblePosition {
   }
 }
 
-/// 气泡边框线条的样式
-enum BubbleBoxBorderStyle {
-  /// 无线条
-  none,
+enum BubbleBoxBorderStyle { none, solid, dashed }
 
-  /// 实线
-  solid,
-
-  /// 虚线
-  dashed
-}
-
-/// 气泡盒子边框参数
 class BubbleBoxBorder {
-  /// 设置线条颜色
   final Color color;
-
-  /// 设置线条宽度
   final double width;
-
-  /// 设置虚线、实线、无线条
   final BubbleBoxBorderStyle style;
-
-  /// 如果是虚线，设置虚线线条的长度
   final double dashedWidth;
-
-  /// 如果是虚线，设置虚线的空白间隙
   final double? dashedGap;
-
-  /// 渐变,应用于边框颜色，[color]将无效
   final Gradient? gradient;
 
   BubbleBoxBorder({
@@ -109,7 +56,6 @@ class BubbleBoxBorder {
     this.gradient,
   });
 
-  /// 放大倍率
   BubbleBoxBorder scale(double t) {
     return BubbleBoxBorder(
       color: color,
@@ -122,30 +68,14 @@ class BubbleBoxBorder {
   }
 }
 
-/// 气泡边框渲染
 class BubbleShapeBorder extends ShapeBorder {
-  /// 气泡的方向
   final BubbleDirection direction;
-
-  /// 气泡高度
   final double arrowHeight;
-
-  /// 气泡尖角底部长度
   final double arrowAngle;
-
-  /// 气泡尖角钝角长度
   final double arrowQuadraticBezierLength;
-
-  /// 尖角定位偏移
   final BubblePosition position;
-
-  /// 边框
   final BubbleBoxBorder? border;
-
-  /// 半径
   final BorderRadius radius;
-
-  /// 三角形底部圆润的角度
   final double smooth;
 
   BubbleShapeBorder({
@@ -161,27 +91,27 @@ class BubbleShapeBorder extends ShapeBorder {
 
   @override
   EdgeInsetsGeometry get dimensions {
-    EdgeInsets _margin;
+    EdgeInsets margin;
     switch (direction) {
       case BubbleDirection.left:
-        _margin = EdgeInsets.only(left: arrowHeight);
+        margin = EdgeInsets.only(left: arrowHeight);
         break;
       case BubbleDirection.top:
-        _margin = EdgeInsets.only(top: arrowHeight);
+        margin = EdgeInsets.only(top: arrowHeight);
         break;
       case BubbleDirection.right:
-        _margin = EdgeInsets.only(right: arrowHeight);
+        margin = EdgeInsets.only(right: arrowHeight);
         break;
       case BubbleDirection.bottom:
-        _margin = EdgeInsets.only(bottom: arrowHeight);
+        margin = EdgeInsets.only(bottom: arrowHeight);
         break;
       default:
-        _margin = EdgeInsets.zero;
+        margin = EdgeInsets.zero;
     }
     if (border != null && border!.style != BubbleBoxBorderStyle.none) {
-      _margin += EdgeInsets.all(border!.width / 2);
+      margin += EdgeInsets.all(border!.width / 2);
     }
-    return _margin;
+    return margin;
   }
 
   @override
@@ -191,22 +121,17 @@ class BubbleShapeBorder extends ShapeBorder {
 
   @override
   Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    // 修正塞贝尔曲线高度
     var arrowQuadraticBezierLength =
         this.arrowQuadraticBezierLength > arrowHeight
             ? arrowHeight
             : this.arrowQuadraticBezierLength;
 
     Size size = Size(rect.width, rect.height);
-
-    //修改radius安全范围
     BorderRadius radius = _radius(size);
-
     var path = Path();
-    //高度
     double ah = arrowHeight;
-    //角度
     double leftMargin = 0, rightMargin = 0, topMargin = 0, bottomMargin = 0;
+
     if (direction == BubbleDirection.left) {
       leftMargin += ah;
     } else if (direction == BubbleDirection.top) {
@@ -217,7 +142,6 @@ class BubbleShapeBorder extends ShapeBorder {
       bottomMargin += ah;
     }
 
-    /// 左上角半径
     path.moveTo(
       leftMargin,
       topMargin +
@@ -233,26 +157,17 @@ class BubbleShapeBorder extends ShapeBorder {
       topMargin,
     );
 
-    /// 上尖角
     if (direction == BubbleDirection.top) {
       double p = _getTopBottomPosition(size);
-
       path.lineTo(p - arrowAngle - smooth, topMargin);
-
       var x = arrowAngle * arrowQuadraticBezierLength / ah;
-
       path.quadraticBezierTo(p - arrowAngle + smooth, topMargin, p - x,
           arrowQuadraticBezierLength);
-      // path.lineTo(p - x, arrowQuadraticBezierLength);
-
       path.quadraticBezierTo(p, 0, p + x, arrowQuadraticBezierLength);
-
       path.quadraticBezierTo(p + arrowAngle - smooth, topMargin,
           p + arrowAngle + smooth, topMargin);
-      // path.lineTo(p + arrowAngle, topMargin);
     }
 
-    /// 右上角半径
     path.lineTo(
       size.width -
           rightMargin -
@@ -270,27 +185,18 @@ class BubbleShapeBorder extends ShapeBorder {
               size.height),
     );
 
-    /// 右尖角
     if (direction == BubbleDirection.right) {
       double p = _getLeftRightPosition(size);
-
       path.lineTo(size.width - rightMargin, p - arrowAngle - smooth);
-
       var x = ah * arrowQuadraticBezierLength / arrowAngle;
-
       path.quadraticBezierTo(size.width - rightMargin, p - arrowAngle + smooth,
           size.width - arrowQuadraticBezierLength, p - x);
-      // path.lineTo(size.width - arrowQuadraticBezierLength, p - x);
-
       path.quadraticBezierTo(
           size.width, p, size.width - arrowQuadraticBezierLength, p + x);
-
       path.quadraticBezierTo(size.width - rightMargin, p + arrowAngle - smooth,
           size.width - rightMargin, p + arrowAngle + smooth);
-      // path.lineTo(size.width - rightMargin, p + arrowAngle);
     }
 
-    /// 右下角半径
     path.lineTo(
       size.width - rightMargin,
       size.height -
@@ -310,26 +216,18 @@ class BubbleShapeBorder extends ShapeBorder {
                 size.width),
         size.height - bottomMargin);
 
-    /// 下尖角
     if (direction == BubbleDirection.bottom) {
       double p = _getTopBottomPosition(size);
-
       path.lineTo(
           p + arrowAngle - rightMargin + smooth, size.height - bottomMargin);
-
       var x = arrowAngle * arrowQuadraticBezierLength / ah;
-
-      // path.lineTo(p + x - rightMargin, size.height - arrowQuadraticBezierLength);
       path.quadraticBezierTo(
           p + arrowAngle - rightMargin - smooth,
           size.height - bottomMargin,
           p + x - rightMargin,
           size.height - arrowQuadraticBezierLength);
-
       path.quadraticBezierTo(p - rightMargin, size.height, p - rightMargin - x,
           size.height - arrowQuadraticBezierLength);
-
-      // path.lineTo(p - arrowAngle - rightMargin, size.height - bottomMargin);
       path.quadraticBezierTo(
           p - arrowAngle - rightMargin + smooth,
           size.height - bottomMargin,
@@ -337,7 +235,6 @@ class BubbleShapeBorder extends ShapeBorder {
           size.height - bottomMargin);
     }
 
-    /// 左下角半径
     path.lineTo(
         leftMargin +
             math.min(
@@ -356,24 +253,17 @@ class BubbleShapeBorder extends ShapeBorder {
               size.height),
     );
 
-    /// 左尖角
     if (direction == BubbleDirection.left) {
       double p = _getLeftRightPosition(size);
       path.lineTo(leftMargin, p + arrowAngle + smooth);
       var x = ah * arrowQuadraticBezierLength / arrowAngle;
-
       path.quadraticBezierTo(leftMargin, p + arrowAngle - smooth,
           arrowQuadraticBezierLength, p + x);
-      // path.lineTo(arrowQuadraticBezierLength, p + x);
-
       path.quadraticBezierTo(0, p, arrowQuadraticBezierLength, p - x);
-
-      // path.lineTo(leftMargin, p - arrowAngle);
       path.quadraticBezierTo(leftMargin, p - arrowAngle + smooth, leftMargin,
           p - arrowAngle - smooth);
     }
 
-    /// 收尾
     path.lineTo(
         leftMargin,
         topMargin +
@@ -413,7 +303,6 @@ class BubbleShapeBorder extends ShapeBorder {
     );
   }
 
-  /// 左右定位
   double _getLeftRightPosition(Size size) {
     double p = size.height / 2;
     if (position.start != null) {
@@ -427,7 +316,6 @@ class BubbleShapeBorder extends ShapeBorder {
     return p;
   }
 
-  /// 上下定位
   double _getTopBottomPosition(Size size) {
     double p = size.width / 2;
     if (position.start != null) {
@@ -441,7 +329,6 @@ class BubbleShapeBorder extends ShapeBorder {
     return p;
   }
 
-  /// 获取最小值
   double _min(double? v1, double v2, BubbleDirection direction) {
     if (this.direction != direction) {
       return v2;
@@ -452,7 +339,6 @@ class BubbleShapeBorder extends ShapeBorder {
     return math.min(v1, v2);
   }
 
-  /// 对radius值做处理,防越界
   BorderRadius _radius(Size size) {
     double topLeftX = 0,
         topLeftY = 0,
@@ -485,7 +371,7 @@ class BubbleShapeBorder extends ShapeBorder {
         break;
       default:
     }
-    BorderRadius _radius = radius.copyWith(
+    BorderRadius borderRadius = radius.copyWith(
       topLeft: Radius.elliptical(
         _s(radius.topLeft.x, radius.topRight.x, size.width - topLeftX),
         _s(radius.topLeft.y, radius.bottomLeft.y, size.height - topLeftY),
@@ -504,15 +390,13 @@ class BubbleShapeBorder extends ShapeBorder {
         _s(radius.bottomRight.y, radius.topRight.y, size.height - bottomRightY),
       ),
     );
-    return _radius;
+    return borderRadius;
   }
 
-  /// 比例最小值
   double _s(double s1, double s2, double length) {
     return math.min(math.min(s1, s1 / (s1 + s2) * length), length);
   }
 
-  /// copyWith the border
   BubbleShapeBorder copyWith({
     final BubbleDirection? direction,
     final double? arrowHeight,
@@ -565,47 +449,19 @@ class BubbleShapeBorder extends ShapeBorder {
       smooth.hashCode;
 }
 
-/// 气泡框组件
-/// 注意，在[ListView]中，每一个子组件都强制充满宽度，需要用其他可确认宽度的组件包裹该组件，例如[Row]和[Column]，否则该组件也将被强制填充宽度
 class BubbleBox extends StatelessWidget {
-  /// 子组件
   final Widget child;
-
-  /// 气泡背景颜色
   final Color? backgroundColor;
-
-  /// 基于基础内边距的距离边框内边距
   final EdgeInsets padding;
-
-  /// 基于基础内边距的距离边框外边距
   final EdgeInsets? margin;
-
-  /// 如果外层是一个不确定宽度的父组件，则设置基于[LimitedBox]最大宽度大小
   final double? maxWidth;
-
-  /// 如果外层是一个不确定高度的父组件，则设置基于[LimitedBox]最大高大小
   final double? maxHeight;
-
-  /// 如果外层是一个固定宽度的父组件，则设置基于[FractionallySizedBox]最大宽度因子
   final double? widthFactor;
-
-  /// 这是一个[FractionallySizedBox]对象属性的快捷方式
   final double? heightFactor;
-
-  /// 阴影
   final double elevation;
-
-  /// 阴影颜色
   final Color? shadowColor;
-
-  /// 渐变,基于混合模式，可以设置背景或者内容
   final Gradient? gradient;
-
-  /// 渐变合成模式,默认叠加于背景颜色之上，内容之下
   final BlendMode blendMode;
-
-  /// 定义材质的形状
-  /// 如果为空，则默认使用[BubbleShapeBorder]
   final ShapeBorder? shape;
 
   BubbleBox({
@@ -630,10 +486,9 @@ class BubbleBox extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget current = Container(
       padding: padding.add(shape?.dimensions ?? EdgeInsets.zero),
+      color: Colors.transparent,
       child: child,
-      color: Colors.transparent, // 使ShaderMask渲染时能够填充满背景
     );
-    // 渐变
     if (gradient != null) {
       current = ShaderMask(
         shaderCallback: (Rect rect) {
@@ -643,7 +498,6 @@ class BubbleBox extends StatelessWidget {
         child: current,
       );
     }
-    // 气泡框裁剪
     current = Material(
       shape: shape,
       clipBehavior: Clip.antiAlias,

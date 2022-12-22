@@ -64,31 +64,11 @@ class ChallengeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Image.asset(
-                        'assets/challenges/difficulty_1_jp.png',
-                        width: 48,
-                        height: 48,
-                      ),
-                      Image.asset(
-                        'assets/challenges/difficulty_1_jp.png',
-                        width: 48,
-                        height: 48,
-                      ),
-                      Image.asset(
-                        'assets/challenges/difficulty_2_jp.png',
-                        width: 48,
-                        height: 48,
-                      ),
-                      Image.asset(
-                        'assets/challenges/difficulty_2_jp.png',
-                        width: 48,
-                        height: 48,
-                      ),
-                      Image.asset(
-                        'assets/challenges/difficulty_2_jp.png',
-                        width: 48,
-                        height: 48,
-                      ),
+                      difficulty(1),
+                      difficulty(1),
+                      difficulty(2),
+                      difficulty(2),
+                      difficulty(2),
                     ],
                   ),
                   const SizedBox(height: 30),
@@ -105,6 +85,14 @@ class ChallengeScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget difficulty(int version) {
+    return Image.asset(
+      'assets/challenges/difficulty_${version}_jp.png',
+      width: 48,
+      height: 48,
     );
   }
 }

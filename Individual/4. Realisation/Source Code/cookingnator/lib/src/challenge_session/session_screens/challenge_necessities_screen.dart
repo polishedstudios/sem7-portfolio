@@ -33,229 +33,21 @@ class ChallengeNecessitiesScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       ConstrainedBox(
-                        constraints: const BoxConstraints(maxHeight: 250),
-                        // child: Image.asset(
-                        //     'assets/challenges/mawaru-penguindrum-2.gif'),
-                        child: Image.network(
-                          'https://assets.epicurious.com/photos/587668a6e8515df0310ca8b8/6:4/w_1600%2Cc_limit/japanese-curry-inset-06012017.jpg',
-                        ),
-                      ),
+                          constraints: const BoxConstraints(maxHeight: 250),
+                          child: Image.asset(
+                              'assets/challenges/CurryRice_Ingredients.png')),
                       const SizedBox(height: 30),
                       Expanded(
                         child: ListView(
                           children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: true,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "400g onion",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: true,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "250g potato",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: false,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "100g carrot",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: true,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "1tbsp oil",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: false,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "100g curry blocks or curry mix",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: false,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "800ml water",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Divider(
-                              thickness: 1,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 1.1,
-                                  child: Checkbox(
-                                    value: false,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                    ),
-                                    activeColor: const Color(0xFFce82ff),
-                                    onChanged: (bool? newValue) {},
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                const Text(
-                                  "4 cups of rice",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 39, 38, 39),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            ),
+                            mockRow(false, true, "400g onion"),
+                            mockRow(true, true, "250g potato"),
+                            mockRow(true, false, "100g carrot"),
+                            mockRow(true, true, "1tbsp oil"),
+                            mockRow(
+                                true, false, "100g curry blocks or curry mix"),
+                            mockRow(true, false, "800ml water"),
+                            mockRow(true, true, "4 cups of rice"),
                           ],
                         ),
                       ),
@@ -271,6 +63,45 @@ class ChallengeNecessitiesScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget mockRow(bool divider, bool checked, String stepDescription) {
+    return Column(
+      children: [
+        if (divider) ...{
+          Divider(
+            thickness: 1,
+            height: 15,
+            color: Colors.grey.shade300,
+          ),
+        },
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Transform.scale(
+              scale: 1.1,
+              child: Checkbox(
+                value: checked,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
+                activeColor: const Color(0xFFce82ff),
+                onChanged: (bool? newValue) {}, //
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              stepDescription,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 39, 38, 39),
+                fontSize: 22,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
