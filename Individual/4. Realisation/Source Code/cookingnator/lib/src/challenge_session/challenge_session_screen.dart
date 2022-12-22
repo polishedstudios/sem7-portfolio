@@ -52,7 +52,7 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
     });
   }
 
-  finishedLoading() {
+  finishedNecessities() {
     setState(() {
       activeStep = 3;
     });
@@ -60,13 +60,13 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
 
   finishedStepsOverview() {
     setState(() {
-      activeStep = 5;
+      activeStep = 4;
     });
   }
 
-  finishedNecessities() {
+  finishedLoading() {
     setState(() {
-      activeStep = 4;
+      activeStep = 5;
     });
   }
 
@@ -87,11 +87,11 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
       case 1:
         return upgradeScreen;
       case 2:
-        return loadingScreen;
-      case 3:
         return necessitiesScreen;
-      case 4:
+      case 3:
         return stepsOverviewScreen;
+      case 4:
+        return loadingScreen;
       case 5:
         return stepsScreen;
       case 6:

@@ -18,13 +18,37 @@ class _ChallengeStepsScreen extends State<ChallengeStepsScreen> {
   @override
   initState() {
     stepScreens = [
-      StepScreen(1, handleNext),
-      StepScreen(2, handleNext),
-      StepScreen(3, handleNext),
+      StepScreen(
+        1,
+        'assets/challenges/mawaru-penguindrum-4.gif',
+        'Cut all ingredients into cubes of 2cm.',
+        handlePrevious,
+        handleNext,
+      ),
+      StepScreen(
+        2,
+        'assets/challenges/mawaru-penguindrum-3.gif',
+        'Sauté onion pieces until the edges start browning.',
+        handlePrevious,
+        handleNext,
+      ),
+      StepScreen(
+        3,
+        'assets/challenges/mawaru-penguindrum-3.gif',
+        'Add potato and carrot pieces to the pot and stir.',
+        handlePrevious,
+        handleNext,
+      ),
       // presentation screen?
     ];
     stepAmount = stepScreens.length;
     super.initState();
+  }
+
+  handlePrevious() {
+    setState(() {
+      activeStep--;
+    });
   }
 
   handleNext() {
