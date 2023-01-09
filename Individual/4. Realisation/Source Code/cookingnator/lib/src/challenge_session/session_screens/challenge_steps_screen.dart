@@ -62,8 +62,14 @@ class _ChallengeStepsScreen extends State<ChallengeStepsScreen> {
     List<StepScreen> steps = [];
     for (var i = 0; i < widget.challenge.steps.length; i++) {
       DishStep step = widget.challenge.steps.elementAt(i);
-      steps.add(StepScreen(i + 1, getImagePath(step.type), step.instruction,
-          handlePrevious, handleNext));
+      steps.add(StepScreen(
+        i + 1,
+        widget.challenge.steps.length,
+        getImagePath(step.type),
+        step.instruction,
+        handlePrevious,
+        handleNext,
+      ));
     }
     return steps;
   }

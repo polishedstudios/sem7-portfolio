@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../buttons/primary_button.dart';
+import '../../../buttons/secondary_button.dart';
 import '../../speech_bubble.dart';
 
 class StepScreen extends StatelessWidget {
-  const StepScreen(this.stepNumber, this.imagePath, this.instructionText,
-      this.callbackBack, this.callbackContinue,
+  const StepScreen(this.stepNumber, this.lastStepNumber, this.imagePath,
+      this.instructionText, this.callbackBack, this.callbackContinue,
       {super.key});
   final Function callbackBack;
   final Function callbackContinue;
-  final int stepNumber; // only for now
+  final int stepNumber;
+  final int lastStepNumber;
   final String imagePath;
   final String instructionText;
 
@@ -81,10 +83,10 @@ class StepScreen extends StatelessWidget {
                   children: [
                     if (stepNumber != 1) ...{
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 4,
+                        width: MediaQuery.of(context).size.width / 4.5,
                         child: Align(
-                          alignment: Alignment.centerRight,
-                          child: PrimaryButton('Back', () {
+                          alignment: Alignment.center,
+                          child: SecondaryButton('Back', () {
                             callbackBack();
                           }),
                         ),
@@ -94,14 +96,13 @@ class StepScreen extends StatelessWidget {
                     Expanded(
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child:
-                            stepNumber != 3 // can add a parameter for lastStep
-                                ? PrimaryButton('Continue', () {
-                                    callbackContinue();
-                                  })
-                                : PrimaryButton('Finish', () {
-                                    callbackContinue();
-                                  }),
+                        child: stepNumber != lastStepNumber
+                            ? PrimaryButton('Continue', () {
+                                callbackContinue();
+                              })
+                            : PrimaryButton('Finish', () {
+                                callbackContinue();
+                              }),
                       ),
                     ),
                   ],
