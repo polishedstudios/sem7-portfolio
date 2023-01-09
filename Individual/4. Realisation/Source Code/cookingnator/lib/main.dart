@@ -1,6 +1,8 @@
+import 'package:cookingnator/src/challenge_selection/challenges/challenges_jp.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:collection/collection.dart';
 
 import 'src/style/palette.dart';
 import 'src/style/transition.dart';
@@ -28,13 +30,28 @@ class MyApp extends StatelessWidget {
             const ChallengeSelectionScreen(key: Key('challenge selection')),
         routes: [
           GoRoute(
-            path: 'session',
-            builder: (context, state) =>
-                const ChallengeSessionScreen(key: Key('challenge session')),
-            pageBuilder: (context, state) => buildTransition(
-              child:
-                  const ChallengeSessionScreen(key: Key('challenge session')),
-            ),
+            path: 'session/:challenge',
+            builder: (context, state) {
+              final challenge = challenges.singleWhereOrNull(
+                  (e) => e.dishName.name == state.params['challenge']);
+              return ChallengeSessionScreen(challenge!,
+                  key: const Key('challenge session'));
+            },
+            pageBuilder: (context, state) {
+              final challenge = challenges.singleWhereOrNull(
+                  (e) => e.dishName.name == state.params['challenge']);
+              return buildTransition(
+                child: ChallengeSessionScreen(challenge!,
+                    key: const Key('challenge session')),
+              );
+            },
+            redirect: (context, state) {
+              final challenge = challenges.singleWhereOrNull(
+                  (e) => e.dishName.name == state.params['challenge']);
+              if (challenge == null) {
+                return '/';
+              }
+            },
           ),
         ],
       ),

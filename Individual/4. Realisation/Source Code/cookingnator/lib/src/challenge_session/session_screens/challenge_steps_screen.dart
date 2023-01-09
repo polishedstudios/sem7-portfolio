@@ -1,9 +1,11 @@
 import 'package:cookingnator/src/challenge_session/session_screens/steps_screens/step_screen.dart';
 import 'package:flutter/material.dart';
+import '../../challenge_selection/challenges/challenge.dart';
 import '../session_topbar.dart';
 
 class ChallengeStepsScreen extends StatefulWidget {
-  const ChallengeStepsScreen(this.callback, {super.key});
+  const ChallengeStepsScreen(this.challenge, this.callback, {super.key});
+  final Challenge challenge;
   final Function callback;
 
   @override
@@ -17,30 +19,7 @@ class _ChallengeStepsScreen extends State<ChallengeStepsScreen> {
 
   @override
   initState() {
-    stepScreens = [
-      StepScreen(
-        1,
-        'assets/challenges/mawaru-penguindrum-4.gif',
-        'Cut all ingredients into cubes of 2cm.',
-        handlePrevious,
-        handleNext,
-      ),
-      StepScreen(
-        2,
-        'assets/challenges/mawaru-penguindrum-3.gif',
-        'Sauté onion pieces until the edges start browning.',
-        handlePrevious,
-        handleNext,
-      ),
-      StepScreen(
-        3,
-        'assets/challenges/mawaru-penguindrum-3.gif',
-        'Add potato and carrot pieces to the pot and stir.',
-        handlePrevious,
-        handleNext,
-      ),
-      // presentation screen?
-    ];
+    stepScreens = getSteps();
     stepAmount = stepScreens.length;
     super.initState();
   }
@@ -77,5 +56,28 @@ class _ChallengeStepsScreen extends State<ChallengeStepsScreen> {
         ],
       ),
     );
+  }
+
+  List<StepScreen> getSteps() {
+    List<StepScreen> steps = [];
+    for (var i = 0; i < widget.challenge.steps.length; i++) {
+      DishStep step = widget.challenge.steps.elementAt(i);
+      steps.add(StepScreen(i + 1, getImagePath(step.type), step.instruction,
+          handlePrevious, handleNext));
+    }
+    return steps;
+  }
+
+  String getImagePath(String type) {
+    switch (type) {
+      case 'prep':
+        return 'assets/challenges/mawaru-penguindrum-4.gif';
+      case 'cook':
+        return 'assets/challenges/mawaru-penguindrum-3.gif';
+      case 'presentation':
+        return 'assets/challenges/mawaru-penguindrum-6.gif';
+      default:
+        return 'assets/challenges/mawaru-penguindrum-3.gif';
+    }
   }
 }

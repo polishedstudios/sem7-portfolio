@@ -6,7 +6,7 @@ const challenges = [
     dishName: DishName(
       name: 'Curry Rice',
       original: 'カレーライス',
-      originalPronounciation: 'Karēraisu',
+      originalPronunciation: 'Karēraisu',
     ),
     image: Image(image: AssetImage('assets/challenges/CurryRice.png')),
     difficulty: 2,
@@ -30,8 +30,7 @@ const challenges = [
       DishStep(
           type: "cook",
           title: "Cook rice and set aside",
-          instruction:
-              "Cook the rice and set aside. While cooking the rice, continue with the next steps."),
+          instruction: "Cook the rice and set aside. While cooking, continue."),
       DishStep(
           type: "cook",
           title: "Sauté onion pieces",

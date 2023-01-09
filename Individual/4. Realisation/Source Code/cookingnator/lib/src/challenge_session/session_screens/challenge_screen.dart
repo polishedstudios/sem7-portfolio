@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../challenge_selection/challenges/challenge.dart';
 import '../session_topbar.dart';
 import '../../buttons/primary_button.dart';
 import '../../buttons/secondary_button.dart';
 
 class ChallengeScreen extends StatelessWidget {
-  const ChallengeScreen(this.callback, {super.key});
+  const ChallengeScreen(this.challenge, this.callback, {super.key});
+  final Challenge challenge;
   final Function callback;
 
   @override
@@ -23,54 +25,48 @@ class ChallengeScreen extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        const Text(
-                          'Curry Rice',
-                          style: TextStyle(
+                        Text(
+                          challenge.dishName.name,
+                          style: const TextStyle(
                             color: Color.fromARGB(255, 39, 38, 39),
                             fontSize: 38,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const Text(
-                          'カレーライス',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 98, 95, 98),
-                            fontSize: 25,
-                            fontWeight: FontWeight.w600,
+                        if (challenge.dishName.original != null) ...{
+                          Text(
+                            challenge.dishName.original!,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 98, 95, 98),
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                        const Text(
-                          'Karēraisu',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 105, 101, 105),
-                            fontSize: 22,
-                            fontWeight: FontWeight.w400,
+                        },
+                        if (challenge.dishName.originalPronunciation !=
+                            null) ...{
+                          Text(
+                            challenge.dishName.originalPronunciation!,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 105, 101, 105),
+                              fontSize: 22,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ),
+                        },
                         const SizedBox(height: 18),
                         Expanded(
                           child: Container(
                             alignment: Alignment.center,
                             width: double.infinity,
-                            child:
-                                Image.asset('assets/challenges/CurryRice.png'),
+                            child: challenge.image,
                           ),
                         ),
                         const SizedBox(height: 25),
                       ],
                     ),
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      difficulty(1),
-                      difficulty(1),
-                      difficulty(2),
-                      difficulty(2),
-                      difficulty(2),
-                    ],
-                  ),
+                  difficulty(),
                   const SizedBox(height: 30),
                   PrimaryButton('Accept challenge', () {
                     callback();
@@ -88,7 +84,23 @@ class ChallengeScreen extends StatelessWidget {
     );
   }
 
-  Widget difficulty(int version) {
+  Widget difficulty() {
+    List<Widget> icons = [];
+    for (var i = 1; i <= 5; i++) {
+      if (i <= challenge.difficulty) {
+        icons.add(difficultyIcon(1));
+      } else {
+        icons.add(difficultyIcon(2));
+      }
+    }
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: icons,
+    );
+  }
+
+  Widget difficultyIcon(int version) {
     return Image.asset(
       'assets/challenges/difficulty_${version}_jp.png',
       width: 48,

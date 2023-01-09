@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../challenge_selection/challenges/challenge.dart';
 import 'session_screens/challenge_screen.dart';
 import 'session_screens/loading_screen.dart';
 import 'session_screens/challenge_upgrade_screen.dart';
@@ -9,7 +11,9 @@ import 'session_screens/steps_screens/step_presentation_screen.dart';
 import 'session_screens/challenge_complete_screen.dart';
 
 class ChallengeSessionScreen extends StatefulWidget {
-  const ChallengeSessionScreen({super.key});
+  const ChallengeSessionScreen(this.selectedChallenge, {super.key});
+  final Challenge selectedChallenge;
+
   @override
   State<ChallengeSessionScreen> createState() => _ChallengeSessionScreenState();
 }
@@ -26,13 +30,17 @@ class _ChallengeSessionScreenState extends State<ChallengeSessionScreen> {
 
   @override
   initState() {
-    challengeScreen = ChallengeScreen(acceptedChallenge);
+    challengeScreen =
+        ChallengeScreen(widget.selectedChallenge, acceptedChallenge);
     upgradeScreen = ChallengeUpgradeScreen(choseUpgrade);
-    necessitiesScreen = ChallengeNecessitiesScreen(finishedNecessities);
-    stepsOverviewScreen = ChallengeStepsOverviewScreen(finishedStepsOverview);
+    necessitiesScreen = ChallengeNecessitiesScreen(
+        widget.selectedChallenge, finishedNecessities);
+    stepsOverviewScreen = ChallengeStepsOverviewScreen(
+        widget.selectedChallenge, finishedStepsOverview);
     loadingScreen = LoadingScreen(finishedLoading);
-    stepsScreen = ChallengeStepsScreen(finishedSteps);
-    completeScreen = ChallengeCompleteScreen(closeChallenge);
+    stepsScreen = ChallengeStepsScreen(widget.selectedChallenge, finishedSteps);
+    completeScreen =
+        ChallengeCompleteScreen(widget.selectedChallenge, closeChallenge);
     super.initState();
   }
 

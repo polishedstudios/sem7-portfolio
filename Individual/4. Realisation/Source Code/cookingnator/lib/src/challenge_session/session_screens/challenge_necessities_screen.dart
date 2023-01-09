@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import '../../challenge_selection/challenges/challenge.dart';
 import '../session_topbar.dart';
 import '../../buttons/primary_button.dart';
 
-class ChallengeNecessitiesScreen extends StatelessWidget {
-  const ChallengeNecessitiesScreen(this.callback, {super.key});
+class ChallengeNecessitiesScreen extends StatefulWidget {
+  const ChallengeNecessitiesScreen(this.challenge, this.callback, {super.key});
+  final Challenge challenge;
   final Function callback;
+
+  @override
+  State<ChallengeNecessitiesScreen> createState() =>
+      _ChallengeNecessitiesScreen();
+}
+
+class _ChallengeNecessitiesScreen extends State<ChallengeNecessitiesScreen> {
+  bool checked = false;
+  List<bool> checkboxValue = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,30 +44,19 @@ class ChallengeNecessitiesScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       ConstrainedBox(
-                          constraints: const BoxConstraints(maxHeight: 250),
-                          child: Image.asset(
-                              'assets/challenges/CurryRice_Ingredients.png')),
+                        constraints: const BoxConstraints(maxHeight: 450),
+                        child: widget.challenge.ingredientsImage,
+                      ),
                       const SizedBox(height: 30),
                       Expanded(
-                        child: ListView(
-                          children: [
-                            mockRow(false, true, "400g onion"),
-                            mockRow(true, true, "250g potato"),
-                            mockRow(true, false, "100g carrot"),
-                            mockRow(true, true, "1tbsp oil"),
-                            mockRow(
-                                true, false, "100g curry blocks or curry mix"),
-                            mockRow(true, false, "800ml water"),
-                            mockRow(true, true, "4 cups of rice"),
-                          ],
-                        ),
+                        child: ListView(children: ingredients()),
                       ),
                     ],
-                  ), // rest in here
+                  ),
                 ),
                 const SizedBox(height: 30),
                 PrimaryButton('Continue', () {
-                  callback();
+                  widget.callback();
                 }),
               ]),
             ),
@@ -66,40 +66,57 @@ class ChallengeNecessitiesScreen extends StatelessWidget {
     );
   }
 
-  Widget mockRow(bool divider, bool checked, String stepDescription) {
-    return Column(
-      children: [
-        if (divider) ...{
-          Divider(
-            thickness: 1,
-            height: 15,
-            color: Colors.grey.shade300,
-          ),
-        },
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+  List<Widget> ingredients() {
+    List<Widget> ingredientsRow = [];
+    for (var i = 0; i < widget.challenge.ingredients.length; i++) {
+      if (i == 0) {
+        ingredientsRow
+            .add(ingredientRow(widget.challenge.ingredients.elementAt(i)));
+      } else {
+        Column column = Column(
           children: [
-            Transform.scale(
-              scale: 1.1,
-              child: Checkbox(
-                value: checked,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                ),
-                activeColor: const Color(0xFFce82ff),
-                onChanged: (bool? newValue) {}, //
-              ),
+            Divider(
+              thickness: 1,
+              height: 15,
+              color: Colors.grey.shade300,
             ),
-            const SizedBox(width: 12),
-            Text(
-              stepDescription,
-              style: const TextStyle(
-                color: Color.fromARGB(255, 39, 38, 39),
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+            ingredientRow(widget.challenge.ingredients.elementAt(i)),
           ],
+        );
+        ingredientsRow.add(column);
+      }
+    }
+    return ingredientsRow;
+  }
+
+  Widget ingredientRow(String stepDescription) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Transform.scale(
+          scale: 1.1,
+          child: Checkbox(
+            value:
+                checked, // all generated checkboxes use the same state value for now.
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+            ),
+            activeColor: const Color(0xFFce82ff),
+            onChanged: (bool? newValue) {
+              setState(() {
+                checked = newValue!;
+              });
+            },
+          ),
+        ),
+        const SizedBox(width: 12),
+        Text(
+          stepDescription,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 39, 38, 39),
+            fontSize: 22,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ],
     );

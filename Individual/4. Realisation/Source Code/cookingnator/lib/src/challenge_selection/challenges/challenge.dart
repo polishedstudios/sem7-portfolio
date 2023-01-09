@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class DishName {
   final String name;
   final String? original;
-  final String? originalPronounciation;
+  final String? originalPronunciation;
 
   const DishName({
     required this.name,
     this.original,
-    this.originalPronounciation,
+    this.originalPronunciation,
   });
 }
 

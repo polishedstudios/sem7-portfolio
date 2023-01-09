@@ -50,7 +50,7 @@ class ChallengeSelectionScreen extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.only(right: 160),
                           child: ChallengeButtonCurrent(() {
-                            GoRouter.of(context).go('/session');
+                            GoRouter.of(context).go('/session/Curry Rice');
                           }),
                         ),
                         Container(
